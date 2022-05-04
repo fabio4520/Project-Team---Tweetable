@@ -53,8 +53,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_04_190225) do
 
   create_table "tweets", force: :cascade do |t|
     t.text "body"
-    t.integer "replies_count"
-    t.integer "likes_count"
+    t.integer "replies_count", default: 0
+    t.integer "likes_count", default: 0
     t.bigint "user_id", null: false
     t.bigint "replied_to_id"
     t.datetime "created_at", null: false
