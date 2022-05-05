@@ -11,6 +11,28 @@
   </head>
 
   <body>
+    <%# botones de login y logout %>
+    <nav>
+      <div>
+        <% if current_user%>
+          <p>Welcome <%=current_user.username%> </p>
+          <%=link_to "Edit", edit_user_registration_path %>
+        
+        <% end %>
+        <% if current_user%>
+          <%=button_to "Log Out", destroy_user_session_path, :method=> :delete %>
+          <% else %>
+          <%=button_to "Log In", new_user_session_path, :method => :get %>
+        <% end %>
+      </div>
+    </nav>
+    <%# end botones %>
+    <%# Alerts to sessions device %>
+    <div>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
+    <%# end alerts %>
     <%= yield %>
   </body>
 </html>
