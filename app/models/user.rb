@@ -13,7 +13,6 @@ class User < ApplicationRecord
   has_many :tweets, dependent: :nullify
   has_many :likes, dependent: :destroy
   # has_many :tweets, through: :likes
-  has_many :likes
 
   # enum
   enum role: { member: 0,

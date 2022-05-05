@@ -5,7 +5,6 @@ class Tweet < ApplicationRecord
   has_many :threads, class_name: "Tweet", foreign_key: "replied_to_id",
             inverse_of: "replied_to", dependent: :nullify
   has_many :likes, dependent: :destroy
-  # has_many :users, through: :likes
 
   # Validations
   validates :body, presence: true, length: { maximum: 140 }
