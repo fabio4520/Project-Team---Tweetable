@@ -6,7 +6,7 @@
   <%= image_tag(user.cover)%>
   <%= user.name %>
   <%= user.username %>
-  <span>Joined on <%= user.created_at%></span>
+  <span>Joined on <%= user.created_at %></span>
   <% if current_user %>
     <%= button_to "EDIT PROFILE", action: "edit" %>
   <% end %>
@@ -20,7 +20,9 @@
     <div>
 
       <div>
-        <%= image_tag(user.cover)%>
+        <div>
+          <%= image_tag(user.cover)%>
+        </div>
         <div>
           <span><%= user.name %></span>
           <span><%= user.username %></span>
@@ -47,32 +49,6 @@
   <% end %>
 
 
-
-
-  <p>
-    <strong>Username:</strong>
-    <%= user.username %>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <%= user.email %>
-  </p>
-
-  <p>
-    <strong>Birth date:</strong>
-    <%= user.birth_date %>
-  </p>
-
-  <p>
-    <strong>First name:</strong>
-    <%= user.first_name %>
-  </p>
-
-  <p>
-    <strong>Last name:</strong>
-    <%= user.last_name %>
-  </p>
 
   <div hidden>
     <svg  xmlns="http://www.w3.org/2000/svg" >

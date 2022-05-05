@@ -20,19 +20,23 @@ puts "Finish "
 # Admin
 # password = "password"
 puts "Seed Admin"
-admin = User.create(
+
+admin = User.new(
   username: "admin", 
-  name: Faker::Name.name, 
+  name: "admin", 
   role: "admin", 
-  email: Faker::Internet.email,
+  email: "admin@mail.com",
   password: "password"
 )
-if admin.save
+if admin.valid?
+  admin.save
+  
   puts "Admin created"
 else
   puts admin.errors.full_messages.join(", ")
 end
-puts "Finish A dmin"
+
+puts "Finish Admin"
 
 # Admin
 puts "Seeding users"
