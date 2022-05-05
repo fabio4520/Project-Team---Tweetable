@@ -24,12 +24,13 @@
     <%= tweet.body %>
   </p>
   <div>
-    <button class="button round-btn">
-      <%= link_to edit_tweet_path(tweet) do%>
+
+    <%= link_to edit_tweet_path(tweet) do%>
       <%= image_tag("comment_icon.png")%>
-      <% end %>
-    </button>
-    <%#= image_tag("app/assets/images/comment_icon.png") %>
-    <%= image_tag("like_icon.png") %>
+    <% end %>
+    <span><%= tweet.threads.count %></span>
+
+    <%= render "likes/form", like: tweet.likes.new(user:current_user) %>
+    <span><%= tweet.likes.count %></span>
   </div>
 </div>
