@@ -7,8 +7,9 @@
   <%= user.name %>
   <%= user.username %>
   <span>Joined on <%= user.created_at%></span>
-  <%= button_to "EDIT PROFILE", action: "edit" %>
-
+  <% if current_user %>
+    <%= button_to "EDIT PROFILE", action: "edit" %>
+  <% end %>
   <%# Tweets %>
   <div>
     <span>Tweets(<%= user.tweets.size%>)</span>

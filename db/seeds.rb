@@ -38,9 +38,9 @@ puts "Finish A dmin"
 puts "Seeding users"
 4.times do |i|
   user = User.create(
-    username: Faker::Internet.username, 
-    name: Faker::Name.name, 
-    role: "user", 
+    username: Faker::Internet.username,
+    name: Faker::Name.name,
+    role: "member",
     email: Faker::Internet.email,
     password: "password"
   )
