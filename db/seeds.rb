@@ -14,13 +14,13 @@
 # Each member should like some tweets
 
 puts "Destroying data"
-
+Tweet.destroy_all
+User.destroy_all
 puts "Finish "
 
 # Admin
 # password = "password"
 puts "Seed Admin"
-
 admin = User.new(
   username: "admin", 
   name: "admin", 
@@ -29,8 +29,8 @@ admin = User.new(
   password: "password"
 )
 if admin.valid?
+  admin.avatar.attach(io: File.open("db/img/cat.jpg"), filename: "cat.jpg")
   admin.save
-  
   puts "Admin created"
 else
   puts admin.errors.full_messages.join(", ")
@@ -40,15 +40,17 @@ puts "Finish Admin"
 
 # Admin
 puts "Seeding users"
-4.times do |i|
-  user = User.create(
-    username: Faker::Internet.username,
-    name: Faker::Name.name,
-    role: "member",
-    email: Faker::Internet.email,
+10.times do |i|
+  user = User.new(
+    username: Faker::Internet.unique.username, 
+    name: Faker::Name.unique.name, 
+    role: "member", 
+    email: Faker::Internet.unique.email,
     password: "password"
   )
-  if user.save
+  if user.valid?
+    user.avatar.attach(io: File.open("db/img/avatar_default.jpg"), filename: "avatar_default.jpg")
+    user.save
     puts "User created"
   else
     puts user.errors.full_messages.join(", ")
@@ -56,3 +58,35 @@ puts "Seeding users"
 end
 puts "Finish users"
 
+puts "Create Tweets parents"
+10.times do |n|
+  user_id = User.find(rand(User.first.id...User.last.id))
+  tw = Tweet.new(
+    body: Faker::Lorem.paragraph(sentence_count: 5),
+    user: user_id,
+    replied_to_id: nil
+  )
+  if tw.valid?
+    tw.save
+    puts "Tweet created parents"
+  else
+    puts tw.errors.full_messages.join(", ")
+  end
+end
+
+puts "Create Tweets children"
+10.times do |n|
+  user_id = User.find(rand(User.first.id...User.last.id))
+  tw = Tweet.new(
+    body: Faker::Lorem.paragraph(sentence_count: 5),
+    user: user_id,
+    replied_to_id: Tweet.find(rand(Tweet.first.id...Tweet.last.id))
+  )
+  if tw.valid?
+    tw.save
+    puts "Tweet created"
+  else
+    puts tw.errors.full_messages.join(", ")
+  end
+end
+puts "Finish Tweets"

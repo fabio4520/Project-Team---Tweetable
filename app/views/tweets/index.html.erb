@@ -1,14 +1,17 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Tweets</h1>
+<h1>Home</h1>
+
+<%# Box to create tweet %>
+
 
 <div id="tweets">
-  <% @tweets.each do |tweet| %>
-    <%= render tweet %>
-    <p>
-      <%= link_to "Show this tweet", tweet %>
-    </p>
-  <% end %>
-</div>
 
-<%= link_to "New tweet", new_tweet_path %>
+  <%= render "tweets/form", {tweet: Tweet.new} %>
+  <% @tweets.each do |tweet| %>
+    <%= link_to tweet do%>
+      <%= render "card", tweet: tweet%>   
+    <% end %>
+  <% end %>
+
+</div>
