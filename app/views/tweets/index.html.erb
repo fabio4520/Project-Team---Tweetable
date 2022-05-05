@@ -9,12 +9,9 @@
 
   <%= render "tweets/form", {tweet: Tweet.new} %>
   <% @tweets.each do |tweet| %>
-    <%#= render "card", tweet: tweet%>
-
     <%= link_to tweet do%>
       <%= render "card", tweet: tweet%>   
     <% end %>
-
   <% end %>
 
 </div>
