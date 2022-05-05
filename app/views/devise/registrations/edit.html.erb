@@ -1,5 +1,5 @@
 <section class="section-md">
-  <div class="container-md flex flex-column wrap text-center items-center mb-4">
+  <div class="container flex flex-column wrap text-center items-center mb-4">
     <h2 class="mb-4 heading--sm">Edit Profile <%= resource_name.to_s.humanize %></h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>

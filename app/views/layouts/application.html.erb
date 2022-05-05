@@ -10,8 +10,17 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="bg-gray-100">
+    
+    <% if alert %>
+      <div class = "alert_not_logged_in">
+        <p><%= alert %></p>
+        <%= link_to "Sign in", new_user_session_path , class: " button text-decoration-none button--primary" %>
+      </div>
+    <% end %>
+
     <%# botones de login y logout %>
+
     <nav>
       <div>
         <% if current_user%>

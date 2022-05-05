@@ -1,7 +1,7 @@
 
 <section class="section-md">
-  <div class="container-md flex flex-column wrap text-center items-center mb-4">
-    <h2 class="mb-4 heading--sm">Sign up</h2>
+  <div class="container flex flex-column wrap text-center items-center mb-8 bg-white">
+    <h2 class="mb-4 heading--sm">Create an account</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
@@ -50,7 +50,7 @@
       <p class="mb-4">Already a member?</p>
       <%= link_to "Sign in", new_session_path(resource_name) %><br />
     <% end %>
-    <%#= render "devise/shared/links" %>
+
   </div>
 </section>
 
