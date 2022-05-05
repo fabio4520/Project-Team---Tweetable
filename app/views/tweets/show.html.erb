@@ -1,6 +1,29 @@
 <p style="color: green"><%= notice %></p>
-
+<h2>Tweet Detail</h2>
 <%= render @tweet %>
+<%# border div %>
+<hr>
+
+
+<div id="tweets">
+
+  <%= render "tweets/form", {tweet: Tweet.new} %>
+  <% @tweet.threads.each do |tweet| %>
+    <%= link_to tweet do%>
+      <%= render "card", tweet: tweet%>   
+    <% end %>
+  <% end %>
+
+</div>
+
+
+
+
+
+
+
+
+
 
 <div>
   <%= link_to "Edit this tweet", edit_tweet_path(@tweet) %> |

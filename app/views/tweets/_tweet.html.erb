@@ -1,27 +1,31 @@
 <div id="<%= dom_id tweet %>">
+  <div>
+    <% if tweet.user.avatar.attached? %>
+      <div>
+        <%= image_tag(tweet.user.avatar) %>
+      </div>
+    <% end %>
+
+    <div>
+      <div>
+        <span><%= tweet.user.name %></span>
+        <span>@<%= tweet.user.username %></span>
+      </div>
+      <span><%= tweet.updated_at.strftime('%M minutes ago') %></span>
+    </div>
+  </div>
+
   <p>
-    <strong>Body:</strong>
     <%= tweet.body %>
   </p>
-
-  <p>
-    <strong>Replies count:</strong>
-    <%= tweet.replies_count %>
-  </p>
-
-  <p>
-    <strong>Likes count:</strong>
-    <%= tweet.likes_count %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= tweet.user_id %>
-  </p>
-
-  <p>
-    <strong>Replied to:</strong>
-    <%= tweet.replied_to_id %>
-  </p>
+  <div>
+    <button class="button round-btn">
+      <%= link_to edit_tweet_path(tweet) do%>
+      <%= image_tag("comment_icon.png")%>
+      <% end %>
+    </button>
+    <%#= image_tag("app/assets/images/comment_icon.png") %>
+    <%= image_tag("like_icon.png") %>
+  </div>
 
 </div>
