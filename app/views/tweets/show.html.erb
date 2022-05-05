@@ -4,13 +4,12 @@
 <%# border div %>
 <hr>
 
-
 <div id="tweets">
 
-  <%= render "tweets/form", {tweet: Tweet.new} %>
+  <%= render "tweets/form", {tweet: @current_tweet} %>
   <% @tweet.threads.each do |tweet| %>
     <%= link_to tweet do%>
-      <%= render "card", tweet: tweet%>   
+      <%= render "card", tweet: tweet%>
     <% end %>
   <% end %>
 
