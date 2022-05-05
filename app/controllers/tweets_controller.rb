@@ -3,11 +3,12 @@ class TweetsController < ApplicationController
 
   # GET /tweets
   def index
-    @tweets = Tweet.all
+    @tweets = Tweet.where(replied_to: nil).order(updated_at: :desc)
   end
 
   # GET /tweets/1
   def show
+    @current_tweet = Tweet.find(params[:id]).threads.new(user: current_user)
   end
 
   # GET /tweets/new
