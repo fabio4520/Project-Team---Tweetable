@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
   validates :name, presence: true
 
-  has_one_attached :cover
+  has_one_attached :avatar
   # Associations
   has_many :tweets, dependent: :nullify
   has_many :likes, dependent: :destroy
