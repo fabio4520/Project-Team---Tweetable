@@ -11,11 +11,12 @@
     </div>
   <% end %>
 
-  <div hidden>
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, value: current_user.id %>
-  </div>
-
+  <% if current_user %>
+    <div hidden>
+      <%= form.label :user_id %>
+      <%= form.text_field :user_id, value: current_user.id %>
+    </div>
+  <%end%>
   <div hidden>
     <%= form.label :replied_to_id %>
     <%= form.text_field :replied_to_id %>

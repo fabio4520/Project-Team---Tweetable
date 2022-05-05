@@ -146,6 +146,9 @@ GEM
     msgpack (1.5.1-java)
     multi_json (1.15.0)
     multi_xml (0.6.0)
+    net-http (0.2.0)
+      net-protocol
+      uri
     net-imap (0.2.3)
       digest
       net-protocol
@@ -273,6 +276,7 @@ GEM
     tzinfo-data (1.2022.1)
       tzinfo (>= 1.0.0)
     unicode-display_width (2.1.0)
+    uri (0.11.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.0)
@@ -302,6 +306,7 @@ DEPENDENCIES
   faker!
   image_processing (>= 1.2)
   importmap-rails
+  net-http
   omniauth-github!
   omniauth-rails_csrf_protection
   pg (~> 1.1)
