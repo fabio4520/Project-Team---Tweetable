@@ -1,4 +1,53 @@
+ <%# User profile %>
+
 <div id="<%= dom_id user %>">
+
+  <h1>Profile</h1>
+  <%= image_tag(user.cover)%>
+  <%= user.name %>
+  <%= user.username %>
+  <span>Joined on <%= user.created_at%></span>
+  <%= button_to "EDIT PROFILE", action: "edit" %>
+
+  <%# Tweets %>
+  <div>
+    <span>Tweets(<%= user.tweets.size%>)</span>
+    <span>Likes(<%= user.likes.size%>)</span>
+  </div>
+
+  <% user.tweets.each do |tw| %>
+    <div>
+
+      <div>
+        <%= image_tag(user.cover)%>
+        <div>
+          <span><%= user.name %></span>
+          <span><%= user.username %></span>
+          <span><%= tw.updated_at %></span>
+        </div>
+      </div>
+
+      <div>
+        <p><%= tw.body %></p>
+      </div>
+
+      <div>
+        <div>
+          <svg><use xlink:href="#destroy"></svg>
+          <svg><use xlink:href="#edit"></svg>
+        </div>
+        <div>
+          <svg><use xlink:href="#comment"></svg>
+          <svg><use xlink:href="#like"></svg>
+        </div>
+      </div>
+
+    </div>
+  <% end %>
+
+
+
+
   <p>
     <strong>Username:</strong>
     <%= user.username %>
@@ -24,4 +73,30 @@
     <%= user.last_name %>
   </p>
 
+  <div hidden>
+    <svg  xmlns="http://www.w3.org/2000/svg" >
+      <symbol id = "destroy" viewBox="0 0 18 20">
+        <path d="M16 5L15.1327 17.1425C15.0579 18.1891 14.187 19 13.1378 19H4.86224C3.81296 19 2.94208 18.1891 2.86732 17.1425L2 5M7 9V15M11 9V15M12 5V2C12 1.44772 11.5523 1 11 1H7C6.44772 1 6 1.44772 6 2V5M1 5H17" stroke="#7A7A7A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+       </symbol>
+    </svg>
+
+    <svg  xmlns="http://www.w3.org/2000/svg" >
+      <symbol id = "edit" viewBox="0 0 19 19">
+        <path d="M8 3H3C1.89543 3 1 3.89543 1 5V16C1 17.1046 1.89543 18 3 18H14C15.1046 18 16 17.1046 16 16V11M14.5858 1.58579C15.3668 0.804738 16.6332 0.804738 17.4142 1.58579C18.1953 2.36683 18.1953 3.63316 17.4142 4.41421L8.82842 13H6L6 10.1716L14.5858 1.58579Z" stroke="#7A7A7A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+       </symbol>
+    </svg>
+
+    <svg  xmlns="http://www.w3.org/2000/svg" >
+      <symbol id = "comment" viewBox="0 0 20 18">
+      <path d="M6 9H6.01M10 9H10.01M14 9H14.01M19 9C19 13.4183 14.9706 17 10 17C8.46073 17 7.01172 16.6565 5.74467 16.0511L1 17L2.39499 13.28C1.51156 12.0423 1 10.5743 1 9C1 4.58172 5.02944 1 10 1C14.9706 1 19 4.58172 19 9Z" stroke="#7A7A7A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+       </symbol>
+    </svg>
+
+    <svg  xmlns="http://www.w3.org/2000/svg" >
+      <symbol id = "like" viewBox="0 0 20 18">
+        <path d="M2.31802 2.31802C0.56066 4.07538 0.56066 6.92462 2.31802 8.68198L10.0001 16.364L17.682 8.68198C19.4393 6.92462 19.4393 4.07538 17.682 2.31802C15.9246 0.56066 13.0754 0.56066 11.318 2.31802L10.0001 3.63609L8.68198 2.31802C6.92462 0.56066 4.07538 0.56066 2.31802 2.31802Z" stroke="#7A7A7A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+       </symbol>
+    </svg>
+
+  </div>
 </div>
