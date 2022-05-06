@@ -1,26 +1,34 @@
-<h2>Log in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<section class="section-md">
+  <div class="container flex flex-column wrap text-center items-center mb-4 bg-white">
+    
+    <h2 class="mb-4 heading--sm">Sign in to your account</h2>
+    
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    
+      <span class="mb-4">CONTINUE WITH</span>
+      <%= link_to "GITHUB", "#", class: "button button--secondary"%>
+      <span class="mb-4">OR</span>
+
+      <div class="field flex flex-column text-left mb-4">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, 
+        autocomplete: "email",
+        placeholder: "example@mail.com" %>
+      </div>
+
+      <div class="field flex flex-column text-left mb-4">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, 
+        autocomplete: "current-password",
+        placeholder: "********" %>
+      </div>
+
+      <div class="actions mb-4">
+        <%= f.submit "Sign in", class: "button button--primary" %>
+      </div>
+    <% end %>
+
+  <%= render "devise/shared/links" %>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</section>

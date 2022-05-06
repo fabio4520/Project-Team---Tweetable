@@ -10,7 +10,6 @@
     <%= javascript_importmap_tags %>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
   </head>
-
   <body>
     <header>
     <div class="container-lg">
@@ -41,7 +40,9 @@
   
     </header>
     <br>
+    
     <%# botones de login y logout %>
+
     <nav>
       <div>
         <% if current_user%>
@@ -64,6 +65,7 @@
     </div>
     <%# end alerts %>
     <%= yield %>
+
     <footer class="footer_content">
       <div>
       <p>© 2021 - Codeable Tweetable</p>
