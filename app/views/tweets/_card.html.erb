@@ -1,31 +1,35 @@
 <div class="card">
 
-  <div class="card__head">
-    <div>
-      <% if tweet.user.avatar.attached? %>
-        <div>
-          <%= image_tag tweet.user.avatar, class: "index--img" %>
-        </div>
-      <% end %>
-    </div>
-
-    <div>
+  <%= link_to tweet.user do%>
+    <div class="card__head">
       <div>
-        <span class="name" ><%= tweet.user.name %></span>
-        <span class=""username>@<%= tweet.user.username %></span>
+        <% if tweet.user.avatar.attached? %>
+          <div>
+            <%= image_tag tweet.user.avatar, class: "index--img" %>
+          </div>
+        <% end %>
       </div>
 
-      <span class="times_ago">
-        <%= ((Time.zone.now - tweet.updated_at) / 1.minutes).floor %>
-         minutes ago
-      </span>
+      <div>
+        <div>
+          <span class="name" ><%= tweet.user.name %></span>
+          <span class=""username>@<%= tweet.user.username %></span>
+        </div>
+
+        <span class="times_ago">
+          <%= ((Time.zone.now - tweet.updated_at) / 1.minutes).floor %>
+          minutes ago
+        </span>
+      </div>
     </div>
-  </div>
+  <% end %>
 
   <div class="card_body">
-    <div>
-      <p class="text_body content-sm"><%= tweet.body %></p>
-    </div>
+    <%= link_to tweet do%>
+      <div>
+        <p class="text_body content-sm"><%= tweet.body %></p>
+      </div>
+    <% end %>
 
 
     <div class="card__body--icons">
