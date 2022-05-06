@@ -8,17 +8,39 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
   </head>
-
-  <body class="bg-gray-100">
+  <body>
+    <header>
+    <div class="container-lg">
+      <nav class="nav__tweet">
+        <a href="#" class="text-decoration-none">
+          <span class="title">
+            Tweet
+          </span>
+        </a>
+        <input type="checkbox" id="menu-mobile" >
+        <label for="menu-mobile" id="toogle-close"  >
+          <i class="ri-close-line "></i>
+        </label>
+        <label for="menu-mobile" id="toogle-open" >
+          <i class="ri-menu-line"></i>
+        </label>
+        <!-- <label for="menu-mobile" id="toogle-open">a</label> -->
+        <ul class="nav--links expandable">
+          <li><a href="#" class="link text-sm">Message</a></li>
+          <li><a href="#" class="link text-sm">Profile</a></li>
+          <li><a href="#" class="link text-sm">Game</a></li>
+          <li><a href="#" class="link text-sm">Company</a></li>
+          <li><a href="#" type="button" class="button button--secondary  button--sm ">LOG OUT</a></li>
+          <li><a href="#" type="button" class="button button--primary  button--sm ">LOGIN</a></li>
+        </ul>
+      </nav>
+    </div>
+  
+    </header>
+    <br>
     
-    <% if alert %>
-      <div class = "alert_not_logged_in">
-        <p><%= alert %></p>
-        <%= link_to "Sign in", new_user_session_path , class: " button text-decoration-none button--primary" %>
-      </div>
-    <% end %>
-
     <%# botones de login y logout %>
 
     <nav>
