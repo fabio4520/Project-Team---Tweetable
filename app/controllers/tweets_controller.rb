@@ -25,7 +25,7 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new(tweet_params)
 
     if @tweet.save
-      redirect_to @tweet, notice: "Tweet was successfully created."
+      redirect_to tweet_path(@current_tweet = Tweet.find(params[:id]).threads.new(user: current_user))
     else
       render :new, status: :unprocessable_entity
     end
