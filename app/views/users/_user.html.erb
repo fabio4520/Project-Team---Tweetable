@@ -6,31 +6,5 @@
   <%= user.name %>
   <%= user.username %>
   <span>Joined on <%= user.created_at %></span>
-  <% if current_user %>
-    <%= button_to "EDIT PROFILE",edit_user_registration_path(current_user), :method => :edit %>
-  <% end %>
-  <%# Tweets %>
-  <div>
-    <span>Tweets(<%= user.tweets.size%>)</span>
-    <span>Likes(<%= user.likes.size%>)</span>
-  </div>
 
-  <% user.tweets.each do |tw| %>
-    <div>
-
-      <div>
-        <div>
-        </div>
-        <div>
-          <span><%= user.name %></span>
-          <span><%= user.username %></span>
-          <span><%= tw.updated_at %></span>
-        </div>
-      </div>
-
-      <div>
-        <p><%= tw.body %></p>
-      </div>
-    </div>
-  <% end %>
 </div>
