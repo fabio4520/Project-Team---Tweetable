@@ -25,12 +25,20 @@
   </p>
   <div>
 
-    <%= link_to edit_tweet_path(tweet) do%>
+    <%= link_to tweet_path(tweet) do%>
       <%= image_tag("comment_icon.png")%>
     <% end %>
     <span><%= tweet.threads.count %></span>
+    <%# button like enabled or disabled : Yhostin %>
+    <% unless Like.exists?(user:current_user, tweet: tweet) %>
+      <%= render "likes/form", like: tweet.likes.new(user:current_user) %>
+    <% else %>
+      <%= link_to like_path(Like.where(user:current_user, tweet: tweet).first), method: "delete",
+          data: { turbo_method: :delete, turbo_confirm: 'Are you sure dislike tweet?' } do%>
+        <%= image_tag("like_icon.png")%>
+      <% end %>
+    <% end %>
 
-    <%= render "likes/form", like: tweet.likes.new(user:current_user) %>
     <span><%= tweet.likes.count %></span>
   </div>
 </div>

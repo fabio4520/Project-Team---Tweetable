@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {omniauth_callbacks: :callbacks}
-  
-  get "/profile", to: "users#show", as: "user"
+
+  # get "/profile", to: "users#show", as: "user"
+  resources :users, only: %i[show]
+
   root "tweets#index"
 
   resources :likes

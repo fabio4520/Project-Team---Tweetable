@@ -23,9 +23,9 @@ puts "Finish "
 puts "Seed Admin"
 admin = User.new(
   username: "admin", 
-  name: Faker::Name.name, 
+  name: "admin", 
   role: "admin", 
-  email: Faker::Internet.email,
+  email: "admin@mail.com",
   password: "password"
 )
 if admin.valid?
@@ -35,7 +35,8 @@ if admin.valid?
 else
   puts admin.errors.full_messages.join(", ")
 end
-puts "Finish A dmin"
+
+puts "Finish Admin"
 
 # Admin
 puts "Seeding users"
