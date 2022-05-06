@@ -2,9 +2,15 @@
 
 <div id="<%= dom_id user %>">
 
-  <h1>Profile</h1>
-  <%= user.name %>
-  <%= user.username %>
-  <span>Joined on <%= user.created_at %></span>
+  <h1 class="mb-4 heading--sm">Profile</h1>
+  <% if user.avatar.attached? %>
+    <%= image_tag(user.avatar, class: "image_circle_lg") %>
+  <% end %>
+  
+  <div class="flex flex-column text-center mb-4">
+    <span class= "mb-4"><%= user.name %></span>
+    <span class= "mb-4"><%= user.username %></span>
+    <span class="mb-4">Joined on <%= user.created_at.strftime('%d, %Y') %></span>
+  </div>
 
 </div>
