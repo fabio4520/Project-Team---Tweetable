@@ -118,3 +118,19 @@
     transform: rotate(360deg);
   }
 }
+
+/* new button  */
+
+/* .button--3 {
+  background-color: var(--secondary-300);
+  color: white;
+}
+
+.button--secondary:hover {
+  background-color: var(--secondary-400);
+}
+
+.button--secondary:focus {
+  outline: 2px solid var(--secondary-300);
+  outline-offset: 2px;
+} */

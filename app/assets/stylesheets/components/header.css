@@ -1,79 +1,102 @@
-.header {
-  position: relative;
-  padding: 2rem;
-  background-color: white;
+header {
+  background-color: rgb(255, 255, 255);
+  padding: 15px;
 }
 
-.navbar {
+
+
+/* sdf */
+.nav__tweet{
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 1rem;
+}
+.title{
+  font-size: 20px;
+  font-weight: 700;
+  font-family: var(--font-secondary);
+}
+.title::after{
+  content: "able }";
+  margin-left: -5px;
+  color: var(--gray-500);
+  font-family: var(--font-secondary);
+}
+.title::before{
+  content: "{";
+  color: var(--gray-500);
+  font-family: var(--font-secondary);
 }
 
-.navbar__menu-icon,
-.navbar__menu-icon-close {
-  height: 1.5em;
+
+.nav--links{
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0;
+  flex-wrap: wrap;
+}
+.nav--links li{
+  list-style: none;
+}
+
+.link{
+  text-decoration: none;
+  color: var(--secondary-400);
+  font-weight: 500;
+  text-align: center;
+  padding: 4px 8px;
+  border-radius: 4px;
+  
+}
+.link:hover {
+  color: var(--primary-400);
+}
+
+#menu-mobile,
+#toogle-close,
+#toogle-open{
   display: none;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--gray-500);
-}
 
-.navbar-links {
-  display: flex;
-  /* column-gap: 0.5rem; */
-  row-gap: 0.5rem;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 0;
-  margin: 0;
-}
 
-.navbar-links .link {
-  border-radius: 4px;
-  padding: 0.5em 0.75em;
-  transition: background-color 0.5s;
-}
+@media only screen and (max-width: 400px){
 
-.navbar-links .link:hover {
-  background-color: var(--primary-100);
-}
-
-@media screen and (max-width: 768px) {
-  .header {
-    padding: 1rem;
-  }
-  .navbar-links {
-    display: none;
-  }
-
-  .navbar__menu-icon {
+  .nav__tweet,
+  #toogle-close,
+  #toogle-open{
     display: block;
   }
-
-  .navbar--open .navbar__menu-icon {
-    display: none;
-  }
-
-  .navbar--open .navbar__menu-icon-close {
-    display: block;
-  }
-
-  .navbar--open .navbar-links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    display: flex;
+  .nav--links{
     flex-direction: column;
-    gap: 1em;
+    padding: 0;
+    gap: 8px;
+    padding-bottom: 16px;
+  }
+  .nav--links li:last-child{
     width: 100%;
-    padding: 1rem;
-    background-color: white;
+  }
+
+  .expandable{
+    display: none;
+  }
+  #menu-mobile:checked ~ .expandable{
+    display: flex;
+  }
+  #toogle-close,
+  #toogle-open{
+    position: absolute;
+    right: 16px;
+    top: 15px;
+  }
+ #menu-mobile:checked ~ #toogle-open,
+ #menu-mobile:not(:checked)~#toogle-close {
+   opacity: 0;
+ }
+ #toogle-close,
+  #toogle-open{
+    transition: opacity .3s ease-in-out;
   }
 }
