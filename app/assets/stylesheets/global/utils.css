@@ -121,3 +121,13 @@
   transform: scale(1.1);
   transition: ease 0.75s;
 }
+.image_circle_lg
+{
+  border-radius: 50%;
+  max-height: 150px;
+}
+.image_circle_sm
+{
+  border-radius: 50%;
+  max-height: 76px;
+}

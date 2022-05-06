@@ -1,30 +1,35 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @user %>
+<section class="section-md">
+  <div class="container flex flex-column wrap text-center items-center mb-4 bg-white">
 
-<div>
-  <%# Add polices: to view button edit profile %>
-  
-  <% if current_user == @user%>
-    <%=button_to "Edit Profile", edit_user_registration_path(@user), method: :get %> |
-  <% end %>
-  <%# end polices %>
-  
-</div>
+    <%= render @user %>
 
-<div>
-  <h2>Tweets (<%= @user.tweets.count %>)</h2>
-  <% @user.tweets.each do |tweet| %>
-    <%= render "/tweets/card", tweet: tweet%> 
-  <% end %>
-</div>
+    <div>
+      <%# Add polices: to view button edit profile %>
+      
+      <% if current_user == @user%>
+        <%=button_to "Edit Profile", edit_user_registration_path(@user), method: :get %> |
+      <% end %>
+      <%# end polices %>
 
-<div>
-  <h2>Likes (<%= @user.likes.count %>)</h2>
-  <% @user.likes.each do |like| %>
-    <%= render "/tweets/card", tweet: like.tweet%> 
-  <% end %>
-</div>
+    </div>
+
+    <div>
+      <h2>Tweets (<%= @user.tweets.count %>)</h2>
+      <% @user.tweets.each do |tweet| %>
+        <%= render "/tweets/card", tweet: tweet%> 
+      <% end %>
+    </div>
+
+    <div>
+      <h2>Likes (<%= @user.likes.count %>)</h2>
+      <% @user.likes.each do |like| %>
+        <%= render "/tweets/card", tweet: like.tweet%> 
+      <% end %>
+    </div>
+  </div>
+</section>
 
   <div hidden>
     <div>
