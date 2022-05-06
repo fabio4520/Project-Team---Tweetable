@@ -24,7 +24,7 @@ class LikesController < ApplicationController
     @like = Like.new(like_params)
 
     if @like.save
-      redirect_to @like, notice: "Like was successfully created."
+      redirect_back_or_to root_path
     else
       render :new, status: :unprocessable_entity
     end
