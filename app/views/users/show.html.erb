@@ -1,29 +1,29 @@
 <p style="color: green"><%= notice %></p>
 
 <section class="section-md">
-  <div class="container flex flex-column wrap text-center items-center mb-4 bg-white">
+  <div class="">
 
-    <%= render @user %>
 
-    <div>
+    <div class="flex flex-column wrap text-center items-center mb-4">
+      <%= render @user %>
       <%# Add polices: to view button edit profile %>
       
       <% if current_user == @user%>
-        <%=button_to "Edit Profile", edit_user_registration_path(@user), method: :get %> |
+        <%=button_to "Edit Profile", edit_user_registration_path(@user), method: :get, class: "button button--primary mb-4" %>
       <% end %>
       <%# end polices %>
 
     </div>
 
     <div>
-      <h2>Tweets (<%= @user.tweets.count %>)</h2>
+      <h2 class="mb-4 text-center">Tweets (<%= @user.tweets.count %>)</h2>
       <% @user.tweets.each do |tweet| %>
         <%= render "/tweets/card", tweet: tweet%> 
       <% end %>
     </div>
 
     <div>
-      <h2>Likes (<%= @user.likes.count %>)</h2>
+      <h2 class="mb-4 text-center">Likes (<%= @user.likes.count %>)</h2>
       <% @user.likes.each do |like| %>
         <%= render "/tweets/card", tweet: like.tweet%> 
       <% end %>
