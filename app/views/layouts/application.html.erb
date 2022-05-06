@@ -11,43 +11,48 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
   </head>
   <body class="background">
+
     <header>
-    <div class="container-lg">
-      <nav class="nav__tweet">
-        <%= link_to root_path, class:"text-decoration-none" do %>
-          <span class="title">Tweet</span>
-        <% end %>
-        <input type="checkbox" id="menu-mobile" >
-        <label for="menu-mobile" id="toogle-close"  >
-          <i class="ri-close-line "></i>
-        </label>
-        <label for="menu-mobile" id="toogle-open" >
-          <i class="ri-menu-line"></i>
-        </label>
-        <!-- <label for="menu-mobile" id="toogle-open">a</label> -->
-        <ul class="nav--links expandable">
-          <li>
-          <% if current_user%>
-            <p><%=current_user.username%> </p>
+      <div class="container-lg">
+        <nav class="nav__tweet">
+          <%= link_to root_path, class:"text-decoration-none" do %>
+            <span class="title">Tweet</span>
           <% end %>
-          </li>
-          <li><%= link_to "Tweets", root_path, class: "link text-sm" %>
-        <% if current_user %>
-          <li><%=link_to "Profile", user_path(current_user), class:"link text-sm" %></li>
-          <li><%=button_to "Log Out", destroy_user_session_path, :method=> :delete, class:"button button--secondary button--sm" %></li>
-        <% else %>
-          <li><%=button_to "Log In", new_user_session_path, :method => :get, class:"button button--primary button--sm" %></li>
-        <% end %>  
-        </ul>
-      </nav>
-    </div>
+          <input type="checkbox" id="menu-mobile" >
+          <label for="menu-mobile" id="toogle-close"  >
+            <i class="ri-close-line "></i>
+          </label>
+          <label for="menu-mobile" id="toogle-open" >
+            <i class="ri-menu-line"></i>
+          </label>
+          <!-- <label for="menu-mobile" id="toogle-open">a</label> -->
+          <ul class="nav--links expandable">
+            <li>
+            <% if current_user%>
+              <p><%=current_user.username%> </p>
+            <% end %>
+            </li>
+            <li><%= link_to "Tweets", root_path, class: "link text-sm" %>
+          <% if current_user %>
+            <li><%=link_to "Profile", user_path(current_user), class:"link text-sm" %></li>
+            <li><%=button_to "Log Out", destroy_user_session_path, :method=> :delete, class:"button button--secondary button--sm" %></li>
+          <% else %>
+            <li><%=button_to "Log In", new_user_session_path, :method => :get, class:"button button--primary button--sm" %></li>
+          <% end %>  
+          </ul>
+        </nav>
+      </div>
   
     </header>
     <br>
-    <div>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    </div>
+
+    <% if alert %>
+      <div class = "alert_not_logged_in">
+        <p><%= alert %></p>
+        <%= link_to "Sign in", new_user_session_path , class: " button text-decoration-none button--primary" %>
+      </div>
+    <% end %>
+
     <%# end alerts %>
     <%= yield %>
 
