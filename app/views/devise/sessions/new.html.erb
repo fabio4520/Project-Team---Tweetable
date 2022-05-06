@@ -4,11 +4,18 @@
     
     <h2 class="mb-4 heading--sm">Sign in to your account</h2>
     
+    <span class="mb-4">CONTINUE WITH</span>
+    <%- if devise_mapping.omniauthable? %>
+      <%- resource_class.omniauth_providers.each do |provider| %>
+      <div data-turbo="false">
+        <%= button_to "#{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post, class: "button button--secondary" %><br />
+      </div>
+      <% end %>
+    <% end %>
+    <span class="mb-4">OR</span>
+
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     
-      <span class="mb-4">CONTINUE WITH</span>
-      <%= link_to "GITHUB", "#", class: "button button--secondary"%>
-      <span class="mb-4">OR</span>
 
       <div class="field flex flex-column text-left mb-4">
         <%= f.label :email %><br />
@@ -24,11 +31,18 @@
         placeholder: "********" %>
       </div>
 
-      <div class="actions mb-4">
+      <div class="actions flex flex-column text-center mb-4">
         <%= f.submit "Sign in", class: "button button--primary" %>
       </div>
     <% end %>
 
-  <%= render "devise/shared/links" %>
+  <%#= render "devise/shared/links" %>
+    <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+      <%= link_to "Create an account", new_registration_path(resource_name) %><br />
+    <% end %>
+
+    <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+      <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+    <% end %>
   </div>
 </section>

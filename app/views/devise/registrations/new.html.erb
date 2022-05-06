@@ -2,6 +2,15 @@
 <section class="section-md">
   <div class="container flex flex-column wrap text-center items-center mb-8 bg-white">
     <h2 class="mb-4 heading--sm">Create an account</h2>
+    <span class="mb-4">CONTINUE WITH</span>
+    <%- if devise_mapping.omniauthable? %>
+      <%- resource_class.omniauth_providers.each do |provider| %>
+      <div data-turbo="false">
+        <%= button_to "#{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post, class: "button button--secondary" %><br />
+      </div>
+      <% end %>
+    <% end %>
+    <span class="mb-4">OR</span>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
@@ -44,7 +53,7 @@
         placeholder: "***********" %>
       </div>
 
-      <div class="actions">
+      <div class="actions flex flex-column text-center  mb-4">
         <%= f.submit "Sign up", class: "button button--primary mb-4" %>
       </div>
       <p class="mb-4">Already a member?</p>
