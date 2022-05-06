@@ -1,44 +1,53 @@
-<div>
+<div class="card">
 
-  <div>
-    <% if tweet.user.avatar.attached? %>
-      <div>
-        <%= image_tag(tweet.user.avatar) %>
-      </div>
-    <% end %>
+  <div class="card__head">
+    <div>
+      <% if tweet.user.avatar.attached? %>
+        <div>
+          <%= image_tag tweet.user.avatar, class: "index--img" %>
+        </div>
+      <% end %>
+    </div>
 
     <div>
       <div>
-        <span><%= tweet.user.name %></span>
-        <span>@<%= tweet.user.username %></span>
+        <span class="name" ><%= tweet.user.name %></span>
+        <span class=""username>@<%= tweet.user.username %></span>
       </div>
 
-      <span>
+      <span class="times_ago">
         <%= ((Time.zone.now - tweet.updated_at) / 1.minutes).floor %>
          minutes ago
       </span>
     </div>
   </div>
 
-  <p>
-    <%= tweet.body %>
-  </p>
-  <div>
+  <div class="card_body">
+    <div>
+      <p class="text_body content-sm"><%= tweet.body %></p>
+    </div>
 
-    <%= link_to tweet_path(tweet) do%>
-      <%= image_tag("comment_icon.png")%>
-    <% end %>
-    <span><%= tweet.threads.count %></span>
-    <%# button like enabled or disabled : Yhostin %>
-    <% unless Like.exists?(user:current_user, tweet: tweet) %>
-      <%= render "likes/form", like: tweet.likes.new(user:current_user) %>
-    <% else %>
-      <%= link_to like_path(Like.where(user:current_user, tweet: tweet).first), method: "delete",
-          data: { turbo_method: :delete, turbo_confirm: 'Are you sure dislike tweet?' } do%>
-        <%= image_tag("like_icon.png")%>
-      <% end %>
-    <% end %>
 
-    <span><%= tweet.likes.count %></span>
+    <div class="card__body--icons">
+      <div class="flex_icons" >
+        <div >
+          <%= link_to edit_tweet_path(tweet) do%>
+            <%= image_tag("comment_icon.png")%>
+          <% end %>
+        </div>
+        <div>
+          <span><%= tweet.threads.count %></span>
+        </div>
+      </div>
+
+      <div class="flex_icons">
+        <div>
+          <%= render "likes/form", like: tweet.likes.new(user:current_user) %>
+        </div>
+        <div>
+          <span><%= tweet.likes.count %></span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

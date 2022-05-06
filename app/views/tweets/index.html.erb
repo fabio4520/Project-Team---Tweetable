@@ -1,17 +1,21 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Home</h1>
+<div class="section-sm">
+  <div class="container-sm center">
+    <h1>Home</h1>
 
-<%# Box to create tweet %>
+    <%# Box to create tweet %>
 
 
-<div id="tweets">
+    <div id="tweets">
 
-  <%= render "tweets/form", {tweet: Tweet.new} %>
-  <% @tweets.each do |tweet| %>
-    <%= link_to tweet do%>
-      <%= render "card", tweet: tweet%>   
-    <% end %>
-  <% end %>
+      <%= render "tweets/form", {tweet: Tweet.new} %>
+      <% @tweets.each do |tweet| %>
+        <%= link_to tweet do%>
+          <%= render "card", tweet: tweet%>   
+        <% end %>
+      <% end %>
 
+    </div>
+  </div>
 </div>
