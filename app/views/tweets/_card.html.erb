@@ -1,53 +1,61 @@
-<div class="card">
+<div class="card p-card">
 
-  <div class="card__head">
-    <div>
-      <% if tweet.user.avatar.attached? %>
-        <div>
-          <%= image_tag tweet.user.avatar, class: "index--img" %>
-        </div>
-      <% end %>
-    </div>
-
-    <div>
+  <%= link_to tweet.user do%>
+    <div class="card__head">
       <div>
-        <span class="name" ><%= tweet.user.name %></span>
-        <span class=""username>@<%= tweet.user.username %></span>
+        <% if tweet.user.avatar.attached? %>
+            <%= image_tag tweet.user.avatar, class: "index--img" %>
+        <% else %>
+            <%= image_tag("avatar_default.jpg", class: "index--img") %>
+        <% end %>
       </div>
 
-      <span class="times_ago">
-        <%= ((Time.zone.now - tweet.updated_at) / 1.minutes).floor %>
-         minutes ago
-      </span>
+      <div class="link text-left">
+        <div>
+          <span class="name" ><%= tweet.user.name %></span>
+          <span class=""username>@<%= tweet.user.username %></span>
+        </div>
+
+        <span class="times_ago">
+          <%= time_ago_in_words(tweet.updated_at) %>
+          ago 
+        </span>
+      </div>
     </div>
-  </div>
+  <% end %>
 
   <div class="card_body">
-    <div>
-      <p class="text_body content-sm"><%= tweet.body %></p>
-    </div>
+    <%= link_to tweet do%>
+      <div>
+        <p class="text_body content-sm link text-left"><%= tweet.body %></p>
+      </div>
+    <% end %>
 
 
-    <div class="card__body--icons">
-      <div class="flex_icons" >
-        <div >
+    <div class="flex justify-between">
+
+      <div class="flex gap-4">
+        <% if current_user == tweet.user %>
+          <%= link_to image_tag("destroy.png"), tweet_path(tweet),
+            data: {turbo_method: :delete} %>
+          <%#= link_to edit_tweet_path(tweet) do%>
+            <%#= image_tag("destroy.png")%>
+          <%# end %>
+
           <%= link_to edit_tweet_path(tweet) do%>
+            <%= image_tag("edit.png")%>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="flex gap-4">
+          <%= link_to tweet do%>
             <%= image_tag("comment_icon.png")%>
           <% end %>
-        </div>
-        <div>
-          <span><%= tweet.threads.count %></span>
-        </div>
+
+          <%= render "likes/form", like: tweet.likes.new(user:current_user) %>
       </div>
 
-      <div class="flex_icons">
-        <div>
-          <%= render "likes/form", like: tweet.likes.new(user:current_user) %>
-        </div>
-        <div>
-          <span><%= tweet.likes.count %></span>
-        </div>
-      </div>
     </div>
   </div>
 </div>

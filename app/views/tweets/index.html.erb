@@ -2,7 +2,7 @@
 
 <div class="section-sm">
   <div class="container-sm center">
-    <h1>Home</h1>
+    <h1 class="text-center mb-4">Home</h1>
 
     <%# Box to create tweet %>
 
@@ -10,10 +10,8 @@
     <div id="tweets">
 
       <%= render "tweets/form", {tweet: Tweet.new} %>
-      <% @tweets.each do |tweet| %>
-        <%= link_to tweet do%>
-          <%= render "card", tweet: tweet%>   
-        <% end %>
+      <% @tweets.each do |tweet| %>        
+        <%= render "card", tweet: tweet, user: current_user%>   
       <% end %>
 
     </div>

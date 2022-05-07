@@ -2,15 +2,17 @@
 
 <div id="<%= dom_id user %>">
 
-  <h1 class="mb-4 heading--sm">Profile</h1>
+  <h1 class=" heading--sm">Profile</h1>
   <% if user.avatar.attached? %>
     <%= image_tag(user.avatar, class: "image_circle_lg") %>
+  <% else %>
+    <%= image_tag("avatar_default.jpg", class: "image_circle_lg") %>
   <% end %>
   
-  <div class="flex flex-column text-center mb-4">
-    <span class= "mb-4"><%= user.name %></span>
-    <span class= "mb-4"><%= user.username %></span>
-    <span class="mb-4">Joined on <%= user.created_at.strftime('%d, %Y') %></span>
+  <div class="flex flex-column text-center ">
+    <span><%= user.name %></span>
+    <span>@<%= user.username %></span>
+    <span class="">Joined on <%= user.created_at.strftime('%d, %Y') %></span>
   </div>
 
 </div>
