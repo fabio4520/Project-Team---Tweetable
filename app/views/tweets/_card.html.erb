@@ -53,7 +53,16 @@
             <%= image_tag("comment_icon.png")%>
           <% end %>
 
-          <%= render "likes/form", like: tweet.likes.new(user:current_user) %>
+      <%# button like enabled or disabled : Yhostin %>
+      <% like = current_user.likes.find{ |l| l.tweet == tweet} if current_user %>
+      <% unless !!like %>
+        <%= render "likes/form", like: tweet.likes.new(user:current_user) %>
+      <% else %>
+       <%= link_to like_path(like), method: "delete",
+            data: { turbo_method: :delete, turbo_confirm: 'Are you sure dislike tweet?' } do%>
+            <%= image_tag("like_icon.png")%>
+        <% end %>
+      <% end %>
       </div>
 
     </div>
