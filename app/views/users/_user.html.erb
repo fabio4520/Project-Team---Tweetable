@@ -5,6 +5,8 @@
   <h1 class=" heading--sm">Profile</h1>
   <% if user.avatar.attached? %>
     <%= image_tag(user.avatar, class: "image_circle_lg") %>
+  <% else %>
+    <%= image_tag("avatar_default.jpg", class: "image_circle_lg") %>
   <% end %>
   
   <div class="flex flex-column text-center ">

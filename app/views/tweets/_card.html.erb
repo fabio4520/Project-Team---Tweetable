@@ -10,7 +10,7 @@
         <% end %>
       </div>
 
-      <div>
+      <div class="link text-left">
         <div>
           <span class="name" ><%= tweet.user.name %></span>
           <span class=""username>@<%= tweet.user.username %></span>
@@ -27,7 +27,7 @@
   <div class="card_body">
     <%= link_to tweet do%>
       <div>
-        <p class="text_body content-sm"><%= tweet.body %></p>
+        <p class="text_body content-sm link text-left"><%= tweet.body %></p>
       </div>
     <% end %>
 
@@ -49,7 +49,7 @@
       </div>
 
       <div class="flex gap-4">
-          <%= link_to new_tweet_path(tweet) do%>
+          <%= link_to tweet do%>
             <%= image_tag("comment_icon.png")%>
           <% end %>
 
