@@ -19,7 +19,6 @@ User.destroy_all
 puts "Finish "
 
 # Admin
-# password = "password"
 puts "Seed Admin"
 admin = User.new(
   username: "admin", 

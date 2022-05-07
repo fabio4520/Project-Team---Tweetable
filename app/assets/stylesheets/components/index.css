@@ -13,8 +13,8 @@
 }
 
 .card__head {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 15% 85%;
 }
 
 .card__body--icons {
@@ -26,6 +26,12 @@
 .flex_icons {
   display: flex;
   justify-content: flex-end;
+  gap: 11px;
+}
+
+.flex_icons_right {
+  display: flex;
+  justify-content: flex-start;
   gap: 11px;
 }
 
@@ -82,4 +88,8 @@
 
 .text-area--form {
   border: none;
+}
+.p-card
+{
+  padding: 12px 12px 6px 12px ;
 }

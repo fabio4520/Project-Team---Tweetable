@@ -15,8 +15,7 @@
       </div>
 
       <span class="times_ago">
-        <%= ((Time.zone.now - tweet.updated_at) / 1.minutes).floor %>
-        minutes ago
+        <%= time_ago_in_words(tweet.updated_at) %> ago
       </span>
     </div>
   </div>

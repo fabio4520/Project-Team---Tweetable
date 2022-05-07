@@ -1,12 +1,12 @@
-<div class="card">
+<div class="card p-card">
 
   <%= link_to tweet.user do%>
     <div class="card__head">
       <div>
         <% if tweet.user.avatar.attached? %>
-          <div>
             <%= image_tag tweet.user.avatar, class: "index--img" %>
-          </div>
+        <% else %>
+            <%= image_tag("avatar_default.jpg", class: "index--img") %>
         <% end %>
       </div>
 
@@ -17,8 +17,8 @@
         </div>
 
         <span class="times_ago">
-          <%= ((Time.zone.now - tweet.updated_at) / 1.minutes).floor %>
-          minutes ago
+          <%= time_ago_in_words(tweet.updated_at) %>
+          ago 
         </span>
       </div>
     </div>
@@ -32,26 +32,30 @@
     <% end %>
 
 
-    <div class="card__body--icons">
-      <div class="flex_icons" >
-        <div >
+    <div class="flex justify-between">
+
+      <div class="flex gap-4">
+        <% if current_user == tweet.user %>
+          <%= link_to image_tag("destroy.png"), tweet_path(tweet),
+            data: {turbo_method: :delete} %>
+          <%#= link_to edit_tweet_path(tweet) do%>
+            <%#= image_tag("destroy.png")%>
+          <%# end %>
+
           <%= link_to edit_tweet_path(tweet) do%>
-            <%= image_tag("comment_icon.png")%>
+            <%= image_tag("edit.png")%>
           <% end %>
-        </div>
-        <div>
-          <span><%= tweet.threads.count %></span>
-        </div>
+        <% end %>
       </div>
 
-      <div class="flex_icons">
-        <div>
+      <div class="flex gap-4">
+          <%= link_to new_tweet_path(tweet) do%>
+            <%= image_tag("comment_icon.png")%>
+          <% end %>
+
           <%= render "likes/form", like: tweet.likes.new(user:current_user) %>
-        </div>
-        <div>
-          <span><%= tweet.likes.count %></span>
-        </div>  
       </div>
+
     </div>
   </div>
 </div>
